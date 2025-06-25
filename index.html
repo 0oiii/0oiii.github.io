@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -5,15 +6,36 @@
   <title>CAD System Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-900 text-white">
+  <div class="w-full bg-red-600 text-white text-center py-2 font-semibold">
+    Your community has been successfully registered! <button class="ml-4 text-sm underline">DISMISS</button>
+  </div>
+  <div class="w-full bg-purple-700 text-white text-center py-1 text-xs flex justify-between px-4">
+    <span>BradVibesLive</span>
+    <div>
+      <button class="mr-2">LEARN MORE</button>
+      <button>DISMISS</button>
+    </div>
+  </div>
+
   <div class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-    <h1 class="text-4xl font-bold mb-4">Welcome to the CAD System</h1>
-    <p class="text-lg mb-8">Select a department to continue:</p>
-    <div class="space-y-4">
-      <a href="civilian.html" class="block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700">Civilian</a>
-      <a href="#" class="block bg-gray-400 text-white px-6 py-3 rounded-lg text-lg cursor-not-allowed">Law Enforcement (Coming Soon)</a>
-      <a href="#" class="block bg-gray-400 text-white px-6 py-3 rounded-lg text-lg cursor-not-allowed">Fire & EMS (Coming Soon)</a>
-      <a href="#" class="block bg-gray-400 text-white px-6 py-3 rounded-lg text-lg cursor-not-allowed">Dispatch (Coming Soon)</a>
+    <h1 class="text-3xl font-bold mb-2">Test</h1>
+    <p class="text-sm mb-8">A SonoranCAD Community</p>
+
+    <div class="grid grid-cols-3 gap-4 max-w-xl mb-6">
+      <a href="civilian.html" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white py-3 rounded text-sm font-semibold">CIVILIAN</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">DMV</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">LAW</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">FIRE</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">EMS</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">DISPATCH</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">POLICE</a>
+      <a href="#" class="flex items-center justify-center bg-gray-800 text-white py-3 rounded text-sm font-semibold">ADMIN</a>
+    </div>
+
+    <div class="flex gap-4">
+      <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded text-sm font-semibold">SET DEFAULT COMMUNITY</button>
+      <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded text-sm font-semibold">SWITCH COMMUNITY</button>
     </div>
   </div>
 </body>
