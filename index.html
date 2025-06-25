@@ -22,27 +22,55 @@
     </div>
   </div>
 
-  <!-- Centered Content -->
-  <div class="flex flex-col items-center justify-center min-h-screen px-4">
-    <h1 class="text-2xl font-semibold mt-4">Test</h1>
-    <p class="text-sm text-gray-300 mb-6">A SonoranCAD Community</p>
-
-    <!-- Department Grid -->
-    <div class="grid grid-cols-3 gap-3 w-full max-w-xl mb-6">
-      <a href="civilian.html" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">CIVILIAN</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">DMV</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">LAW</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">FIRE</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">EMS</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">DISPATCH</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">POLICE</a>
-      <a href="#" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm">ADMIN</a>
+  <!-- Content Section -->
+  <div class="flex flex-col md:flex-row items-center justify-center min-h-screen px-4">
+    <!-- Logo Section -->
+    <div class="mb-10 md:mb-0 md:mr-16">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/SonoranCAD_Logo.png" alt="SonoranCAD Logo" class="h-24 md:h-32">
     </div>
 
-    <!-- Bottom Buttons -->
-    <div class="flex gap-4">
-      <button class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded shadow text-sm">SET DEFAULT COMMUNITY</button>
-      <button class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded shadow text-sm">SWITCH COMMUNITY</button>
+    <!-- Right Content -->
+    <div class="text-center">
+      <h1 class="text-2xl font-semibold">Test</h1>
+      <p class="text-sm text-gray-300 mb-6">A SonoranCAD Community</p>
+
+      <!-- Department Grid -->
+      <div class="grid grid-cols-3 gap-3 w-full max-w-md mb-6">
+        <a href="civilian.html" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 rounded shadow text-sm gap-2">
+          <span>&#128100;</span> CIVILIAN
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#128247;</span> DMV
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#9876;&#65039;</span> LAW
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#128658;</span> FIRE
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#10133;</span> EMS
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#128736;</span> DISPATCH
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#128737;</span> POLICE
+        </a>
+        <a href="#" class="flex items-center justify-center bg-gray-800 py-2 rounded shadow text-sm gap-2">
+          <span>&#128101;</span> ADMIN
+        </a>
+      </div>
+
+      <!-- Bottom Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded shadow text-sm flex items-center justify-center gap-2">
+          <span>&#128190;</span> SET DEFAULT COMMUNITY
+        </button>
+        <button class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded shadow text-sm flex items-center justify-center gap-2">
+          <span>&#8646;</span> SWITCH COMMUNITY
+        </button>
+      </div>
     </div>
   </div>
 </body>
