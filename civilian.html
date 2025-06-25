@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civilian CAD System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto py-8 px-4">
+    <h1 class="text-3xl font-bold mb-6">Civilian Management</h1>
+
+    <!-- Create Civilian Form -->
+    <div class="bg-white rounded-xl shadow-md p-6 mb-10">
+      <h2 class="text-xl font-semibold mb-4">Create Civilian</h2>
+      <form id="civilian-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" name="fullName" placeholder="Full Name" required class="border p-2 rounded" />
+        <input type="date" name="dob" placeholder="Date of Birth" required class="border p-2 rounded" />
+        <input type="text" name="gender" placeholder="Gender" class="border p-2 rounded" />
+        <input type="text" name="phone" placeholder="Phone Number" class="border p-2 rounded" />
+        <input type="text" name="address" placeholder="Address" class="border p-2 rounded col-span-2" />
+        <button type="submit" class="bg-blue-600 text-white py-2 rounded col-span-2 hover:bg-blue-700">Save Civilian</button>
+      </form>
+    </div>
+
+    <!-- Civilian List -->
+    <div class="bg-white rounded-xl shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4">Saved Civilians</h2>
+      <ul id="civilian-list" class="space-y-4"></ul>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('civilian-form');
+    const list = document.getElementById('civilian-list');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const civ = {
+        fullName: formData.get('fullName'),
+        dob: formData.get('dob'),
+        gender: formData.get('gender'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+      };
+
+      const item = document.createElement('li');
+      item.className = 'border p-4 rounded bg-gray-50';
+      item.innerHTML = `<strong>${civ.fullName}</strong><br>DOB: ${civ.dob}<br>Phone: ${civ.phone}<br>Address: ${civ.address}`;
+      list.appendChild(item);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
