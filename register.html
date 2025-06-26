@@ -63,10 +63,12 @@
     <p class="text-sm text-gray-400 mb-4">Register a new Sonoran account</p>
 
     <div class="bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
-      <input type="email" placeholder="Email" class="input-box mb-3">
-      <input type="text" placeholder="Username" class="input-box mb-3">
-      <input type="password" placeholder="Password" class="input-box mb-3">
-      <input type="password" placeholder="Confirm Password" class="input-box mb-4">
+        <input id="reg-email" type="email" placeholder="Email" class="input-box mb-3">
+        <input type="text" placeholder="Username" class="input-box mb-3">
+        <input id="reg-password" type="password" placeholder="Password" class="input-box mb-3">
+        <input id="reg-confirm" type="password" placeholder="Confirm Password" class="input-box mb-4">
+
+        
 
       <div class="flex items-center mb-4 text-sm">
         <input type="checkbox" id="notifications" class="mr-2">
@@ -74,7 +76,7 @@
       </div>
 
       <div class="flex justify-end gap-6 text-sm">
-        <a href="#" class="text-orange-400 hover:underline">REGISTER</a>
+        <a href="#" onclick="registerUser()" class="text-orange-400 hover:underline">REGISTER</a>
         <a href="signin.html" class="text-gray-400 hover:underline">CANCEL</a>
       </div>
     </div>
