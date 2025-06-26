@@ -41,7 +41,7 @@
             <th class="p-2">Username</th>
             <th class="p-2">Status</th>
             <th class="p-2">Permissions</th>
-            <th class="p-2">Last Login</th>
+            <th class="p-2">Created At</th>
           </tr>
         </thead>
         <tbody id="user-table-body">
@@ -87,14 +87,18 @@
       if (user) {
         db.collection("users").get().then(snapshot => {
           const tbody = document.getElementById("user-table-body");
+          tbody.innerHTML = ''; // Clear existing content
           snapshot.forEach(doc => {
             const userData = doc.data();
+            const createdAt = userData.createdAt
+              ? new Date(userData.createdAt).toLocaleString()
+              : 'N/A';
             const tr = document.createElement("tr");
             tr.innerHTML = `
               <td class="p-2">${userData.username || 'N/A'}</td>
               <td class="p-2">ACTIVE</td>
               <td class="p-2 text-gray-400">🔒 👮 📧</td>
-              <td class="p-2">${userData.lastLogin || 'N/A'}</td>
+              <td class="p-2">${createdAt}</td>
             `;
             tbody.appendChild(tr);
           });
