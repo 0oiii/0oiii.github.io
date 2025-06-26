@@ -22,16 +22,17 @@
   const auth = getAuth(app);
 
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in — allow access
-      console.log("User is logged in:", user.email);
-    } else {
-      // Delay to allow Firebase to check session
-      setTimeout(() => {
-        window.location.href = "signin.html";
-      }, 500); // gives Firebase time to process
-    }
-  });
+  if (user) {
+    console.log("User is signed in:", user.email);
+    // You may want to show user info here later
+  } else {
+    // Wait a moment before redirecting just in case of race conditions
+    setTimeout(() => {
+      window.location.href = "signin.html";
+    }, 300);
+  }
+});
+
 
 </script>
 </head>
