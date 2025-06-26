@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | SonoranCAD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .input-box {
+      @apply w-full p-2 border border-gray-600 bg-gray-800 text-white rounded;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans flex flex-col min-h-screen">
+  <!-- Top Nav -->
+  <div class="bg-black py-4 px-6 flex justify-between items-center border-b border-gray-700">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/SonoranCAD_Logo.png" alt="SonoranCAD Logo" class="h-8">
+    <a href="#" class="text-sm text-white hover:underline">About</a>
+  </div>
+
+  <!-- Centered Login Box -->
+  <div class="flex flex-col items-center justify-center flex-1 text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Sonoran_Software_Systems_Logo.png" alt="Sonoran Software Logo" class="h-16 mb-2">
+    <h2 class="text-xl font-semibold mb-1">Sign in</h2>
+    <p class="text-sm text-gray-400 mb-4">Use your Sonoran account</p>
+
+    <div class="bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+      <input type="email" placeholder="Email" class="input-box mb-3">
+      <input type="password" placeholder="Password" class="input-box mb-4">
+      <div class="flex justify-around text-sm">
+        <a href="#" class="text-blue-500 hover:underline">LOGIN</a>
+        <a href="#" class="text-orange-400 hover:underline">REGISTER</a>
+        <a href="#" class="text-red-400 hover:underline">FORGOT PASSWORD</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 text-xs py-3 px-4 flex justify-center gap-6 border-t border-gray-800">
+    <span>Sonoran Software Systems, LLC</span>
+    <span>Sonoran CMS</span>
+    <span>Sonoran Radio</span>
+    <span>Sonoran Store</span>
+    <span>Server Hosting</span>
+  </footer>
+</body>
+</html>
