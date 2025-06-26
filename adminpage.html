@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
+      authDomain: "icad-8cbb7.firebaseapp.com",
+      projectId: "icad-8cbb7",
+      storageBucket: "icad-8cbb7.appspot.com",
+      messagingSenderId: "856065896495",
+      appId: "856065896495"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Include Header -->
@@ -30,7 +48,7 @@
           </tr>
         </thead>
         <tbody id="user-table-body">
-          <!-- Dynamically filled with JS -->
+          <!-- Dynamically filled -->
         </tbody>
       </table>
     </div>
@@ -57,15 +75,37 @@
   </div>
 
   <script>
-    // Load header.html dynamically
+    // Load reusable header
     fetch('header.html')
       .then(res => res.text())
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
         const script = document.createElement("script");
-        script.src = "auth.js"; // Make sure this contains the username logic
+        script.src = "auth.js";
         document.body.appendChild(script);
       });
+
+    // Fetch and display user data from Firestore
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        db.collection("users").get().then(snapshot => {
+          const tbody = document.getElementById("user-table-body");
+          snapshot.forEach(doc => {
+            const userData = doc.data();
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td class="p-2">${userData.username || 'N/A'}</td>
+              <td class="p-2">ACTIVE</td>
+              <td class="p-2 text-gray-400">🔒 👮 📧</td>
+              <td class="p-2">${userData.lastLogin || 'N/A'}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }).catch(error => {
+          console.error("Error fetching users:", error);
+        });
+      }
+    });
   </script>
 </body>
 </html>
