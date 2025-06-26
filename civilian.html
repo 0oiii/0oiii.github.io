@@ -3,56 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Civilian CAD System</title>
+  <title>Civilian Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
-  <div class="max-w-4xl mx-auto py-8 px-4">
-    <h1 class="text-3xl font-bold mb-6">Civilian Management</h1>
-
-    <!-- Create Civilian Form -->
-    <div class="bg-white rounded-xl shadow-md p-6 mb-10">
-      <h2 class="text-xl font-semibold mb-4">Create Civilian</h2>
-      <form id="civilian-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" name="fullName" placeholder="Full Name" required class="border p-2 rounded" />
-        <input type="date" name="dob" placeholder="Date of Birth" required class="border p-2 rounded" />
-        <input type="text" name="gender" placeholder="Gender" class="border p-2 rounded" />
-        <input type="text" name="phone" placeholder="Phone Number" class="border p-2 rounded" />
-        <input type="text" name="address" placeholder="Address" class="border p-2 rounded col-span-2" />
-        <button type="submit" class="bg-blue-600 text-white py-2 rounded col-span-2 hover:bg-blue-700">Save Civilian</button>
-      </form>
-    </div>
-
-    <!-- Civilian List -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-      <h2 class="text-xl font-semibold mb-4">Saved Civilians</h2>
-      <ul id="civilian-list" class="space-y-4"></ul>
-    </div>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Top Navigation -->
+  <div class="w-full bg-black py-2 px-4 flex justify-between items-center border-b border-gray-700">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/SonoranCAD_Logo.png" alt="SonoranCAD Logo" class="h-10">
+    <div class="text-sm">BradVibesLive ▼</div>
   </div>
 
-  <script>
-    const form = document.getElementById('civilian-form');
-    const list = document.getElementById('civilian-list');
+  <!-- Toolbar -->
+  <div class="w-full bg-gray-800 py-2 px-4 flex justify-between items-center border-b border-gray-700 text-sm">
+    <div class="text-white">Selected Character</div>
+    <div class="text-white">Active Server: <span class="font-semibold">Server 1 ▼</span></div>
+  </div>
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const civ = {
-        fullName: formData.get('fullName'),
-        dob: formData.get('dob'),
-        gender: formData.get('gender'),
-        phone: formData.get('phone'),
-        address: formData.get('address'),
-      };
-
-      const item = document.createElement('li');
-      item.className = 'border p-4 rounded bg-gray-50';
-      item.innerHTML = `<strong>${civ.fullName}</strong><br>DOB: ${civ.dob}<br>Phone: ${civ.phone}<br>Address: ${civ.address}`;
-      list.appendChild(item);
-
-      form.reset();
-    });
-  </script>
+  <!-- Action Buttons -->
+  <div class="flex justify-center mt-6 gap-4 flex-wrap">
+    <button class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded text-white text-sm flex items-center gap-2">
+      <span>➕</span> NEW CHARACTER
+    </button>
+    <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded text-white text-sm flex items-center gap-2">
+      <span>✏️</span> EDIT CHARACTER
+    </button>
+    <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white text-sm flex items-center gap-2">
+      <span>📋</span> RECORDS
+    </button>
+    <button class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-white text-sm flex items-center gap-2">
+      <span>🪪</span> DMV ▼
+    </button>
+    <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white text-sm flex items-center gap-2">
+      <span>🛡️</span> 911
+    </button>
+  </div>
 </body>
 </html>
