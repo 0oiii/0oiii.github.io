@@ -29,7 +29,7 @@
       try {
         await signInWithEmailAndPassword(auth, email, password);
         alert("Login successful! Redirecting to dashboard...");
-        window.location.href = "index.html";
+        window.location.href = "community-menu.html";
       } catch (error) {
         alert("Login failed: " + error.message);
       }
