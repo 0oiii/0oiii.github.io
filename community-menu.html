@@ -6,33 +6,46 @@
   <title>CAD System Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
-    authDomain: "icad-8cbb7.firebaseapp.com",
-    projectId: "icad-8cbb7",
-    storageBucket: "icad-8cbb7.appspot.com",
-    messagingSenderId: "856065896495",
-    appId: "856065896495"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
+      authDomain: "icad-8cbb7.firebaseapp.com",
+      projectId: "icad-8cbb7",
+      storageBucket: "icad-8cbb7.appspot.com",
+      messagingSenderId: "856065896495",
+      appId: "856065896495"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  onAuthStateChanged(auth, (user) => {
-    const userDisplay = document.getElementById("user-display");
-    const dropdown = document.getElementById("user-dropdown");
+    onAuthStateChanged(auth, async (user) => {
+      const userDisplay = document.getElementById("user-display");
 
-    if (user) {
-      userDisplay.textContent = user.displayName || user.email || "User";
-    } else {
-      setTimeout(() => {
-        window.location.href = "signin.html";
-      }, 300);
-    }
-  });
+      if (user) {
+        try {
+          const userRef = doc(db, "users", user.uid);
+          const userSnap = await getDoc(userRef);
+          if (userSnap.exists()) {
+            const username = userSnap.data().username;
+            userDisplay.textContent = username || "User";
+          } else {
+            userDisplay.textContent = user.email || "User";
+          }
+        } catch (error) {
+          console.error("Failed to fetch username:", error);
+          userDisplay.textContent = user.email || "User";
+        }
+      } else {
+        setTimeout(() => {
+          window.location.href = "signin.html";
+        }, 300);
+      }
+    });
   </script>
   <script>
     function toggleDropdown() {
