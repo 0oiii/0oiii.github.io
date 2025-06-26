@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CAD System Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
+    authDomain: "icad-8cbb7.firebaseapp.com",
+    projectId: "icad-8cbb7",
+    storageBucket: "icad-8cbb7.appspot.com",
+    messagingSenderId: "856065896495",
+    appId: "856065896495"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "signin.html";
+    }
+  });
+</script>
 </head>
 <body class="bg-gray-900 text-white font-sans">
   <!-- Red Banner -->
