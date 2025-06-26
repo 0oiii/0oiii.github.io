@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Firebase SDKs -->
+  <script type="module">
+    // Import Firebase from CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
+      authDomain: "icad-8cbb7.firebaseapp.com",
+      projectId: "icad-8cbb7",
+      storageBucket: "icad-8cbb7.appspot.com",
+      messagingSenderId: "856065896495",
+      appId: "856065896495"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  
+    window.registerUser = async () => {
+      const email = document.querySelector('#reg-email').value;
+      const password = document.querySelector('#reg-password').value;
+      const confirm = document.querySelector('#reg-confirm').value;
+  
+      if (password !== confirm) return alert(\"Passwords do not match\");
+  
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert(\"Registration successful! Redirecting to login...\");
+        window.location.href = \"signin.html\";
+      } catch (error) {
+        alert(\"Error: \" + error.message);
+      }
+    };
+  </script>
+
+
+
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | SonoranCAD</title>
