@@ -3,8 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | SonoranCAD</title>
+  <title>Sign In | SonoranCAD</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .input-box {
+      @apply w-full p-2 border border-gray-700 bg-gray-900 text-white rounded placeholder-gray-400;
+    }
+    input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  </style>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.loginUser = async () => {
+      const email = document.querySelector('#login-email').value;
+      const password = document.querySelector('#login-password').value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Login successful! Redirecting to dashboard...");
+        window.location.href = "index.html";
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    };
+  </script>
 </head>
 <body class="bg-gray-900 text-white font-sans flex flex-col min-h-screen">
   <!-- Top Nav -->
@@ -15,25 +54,28 @@
 
   <!-- Centered Login Box -->
   <div class="flex flex-col items-center justify-center flex-1 text-center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/SonoranCAD_Logo.png" alt="SonoranCAD Logo" class="h-20 mb-4">
-    <h1 class="text-3xl font-bold mb-6">SONORAN<span class="text-red-600">CAD</span></h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Sonoran_Software_Systems_Logo.png" alt="Sonoran Software Logo" class="h-16 mb-2">
+    <h2 class="text-xl font-semibold mb-1">Sign in</h2>
+    <p class="text-sm text-gray-400 mb-4">Use your Sonoran account</p>
 
-    <label class="inline-flex items-center mb-4 text-sm">
-      <input type="checkbox" class="form-checkbox text-blue-500 mr-2">
-      Stay Signed In
-    </label>
-
-    <div class="space-y-3 w-72">
-      <a href="signin.html" class="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded w-full flex items-center justify-center gap-2">
-        <span class="text-white">S</span> LOGIN WITH SONORAN
-      </a>
-      <button class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded w-full flex items-center justify-center gap-2">
-        <span class="text-white">🎮</span> LOGIN WITH DISCORD
-      </button>
-      <button class="bg-gray-700 hover:bg-gray-800 text-white py-2 rounded w-full flex items-center justify-center gap-2">
-        <span class="text-white"></span> LOGIN WITH APPLE
-      </button>
+    <div class="bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+      <input id="login-email" type="email" placeholder="Email" class="input-box mb-3">
+      <input id="login-password" type="password" placeholder="Password" class="input-box mb-4">
+      <div class="flex justify-around text-sm">
+        <a href="#" onclick="loginUser()" class="text-blue-500 hover:underline">LOGIN</a>
+        <a href="register.html" class="text-orange-400 hover:underline">REGISTER</a>
+        <a href="#" class="text-red-400 hover:underline">FORGOT PASSWORD</a>
+      </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 text-xs py-3 px-4 flex justify-center gap-6 border-t border-gray-800">
+    <span>Sonoran Software Systems, LLC</span>
+    <span>Sonoran CMS</span>
+    <span>Sonoran Radio</span>
+    <span>Sonoran Store</span>
+    <span>Server Hosting</span>
+  </footer>
 </body>
 </html>
