@@ -6,6 +6,8 @@
     // Import Firebase from CDN
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
   
     const firebaseConfig = {
       apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
@@ -18,20 +20,33 @@
   
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
+
   
     window.registerUser = async () => {
       const email = document.querySelector('#reg-email').value;
+      const username = document.querySelector('#reg-username').value;
       const password = document.querySelector('#reg-password').value;
       const confirm = document.querySelector('#reg-confirm').value;
-  
-      if (password !== confirm) return alert(\"Passwords do not match\");
-  
+    
+      if (!email || !username || !password) return alert("All fields are required.");
+      if (password !== confirm) return alert("Passwords do not match");
+    
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert(\"Registration successful! Redirecting to login...\");
-        window.location.href = \"signin.html\";
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCred.user;
+    
+        // Save username to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          email: user.email,
+          username: username,
+          createdAt: new Date().toISOString()
+        });
+    
+        alert("Registration successful!");
+        window.location.href = "signin.html";
       } catch (error) {
-        alert(\"Error: \" + error.message);
+        alert("Error: " + error.message);
       }
     };
   </script>
@@ -64,7 +79,7 @@
 
     <div class="bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
         <input id="reg-email" type="email" placeholder="Email" class="input-box mb-3">
-        <input type="text" placeholder="Username" class="input-box mb-3">
+        <input id="reg-username" type="text" placeholder="Username" class="input-box mb-3">
         <input id="reg-password" type="password" placeholder="Password" class="input-box mb-3">
         <input id="reg-confirm" type="password" placeholder="Confirm Password" class="input-box mb-4">
 
