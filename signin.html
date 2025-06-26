@@ -3,13 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | SonoranCAD</title>
+  <title>Sign In | SonoranCAD</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .input-box {
-      @apply w-full p-2 border border-gray-600 bg-gray-800 text-white rounded;
+      @apply w-full p-2 border border-gray-700 bg-gray-900 text-white rounded placeholder-gray-400;
+    }
+    input:focus {
+      outline: none;
+      box-shadow: none;
     }
   </style>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.loginUser = async () => {
+      const email = document.querySelector('#login-email').value;
+      const password = document.querySelector('#login-password').value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Login successful! Redirecting to dashboard...");
+        window.location.href = "index.html";
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    };
+  </script>
 </head>
 <body class="bg-gray-900 text-white font-sans flex flex-col min-h-screen">
   <!-- Top Nav -->
@@ -25,10 +59,10 @@
     <p class="text-sm text-gray-400 mb-4">Use your Sonoran account</p>
 
     <div class="bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
-      <input type="email" placeholder="Email" class="input-box mb-3">
-      <input type="password" placeholder="Password" class="input-box mb-4">
+      <input id="login-email" type="email" placeholder="Email" class="input-box mb-3">
+      <input id="login-password" type="password" placeholder="Password" class="input-box mb-4">
       <div class="flex justify-around text-sm">
-        <a href="#" class="text-blue-500 hover:underline">LOGIN</a>
+        <a href="#" onclick="loginUser()" class="text-blue-500 hover:underline">LOGIN</a>
         <a href="register.html" class="text-orange-400 hover:underline">REGISTER</a>
         <a href="#" class="text-red-400 hover:underline">FORGOT PASSWORD</a>
       </div>
