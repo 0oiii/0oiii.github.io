@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
-
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyAFKceZX09Har-WknJnSSlztASeC9EmM24",
@@ -48,7 +45,7 @@
           </tr>
         </thead>
         <tbody id="user-table-body">
-          <!-- Dynamically filled -->
+          <!-- Dynamically filled with JS -->
         </tbody>
       </table>
     </div>
@@ -75,7 +72,7 @@
   </div>
 
   <script>
-    // Load reusable header
+    // Load header.html dynamically
     fetch('header.html')
       .then(res => res.text())
       .then(data => {
@@ -85,7 +82,7 @@
         document.body.appendChild(script);
       });
 
-    // Fetch and display user data from Firestore
+    // Load users into table
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         db.collection("users").get().then(snapshot => {
