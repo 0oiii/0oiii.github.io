@@ -36,21 +36,26 @@
 
 </script>
 </head>
-<body class="bg-gray-900 text-white font-sans">
-  <!-- Red Banner -->
-  <div class="w-full bg-red-600 text-white text-center py-2 text-sm font-medium">
-    <span>Your community has been successfully registered!</span>
-    <button class="ml-4 underline">DISMISS</button>
+<header class="bg-gray-800 p-4 flex justify-between items-center">
+  <div class="flex items-center">
+    <img src="/path-to-your-logo.png" alt="Logo" class="h-10 mr-3">
+    <span class="text-xl font-bold text-white">SONORAN<span class="text-red-600">CAD</span></span>
   </div>
-
-  <!-- Purple Header Bar -->
-  <div class="w-full bg-purple-700 text-white text-xs flex justify-between items-center px-4 py-1">
-    <div class="font-semibold">BradVibesLive</div>
-    <div>
-      <button class="mr-4 hover:underline">LEARN MORE</button>
-      <button class="hover:underline">DISMISS</button>
+  <div class="relative">
+    <button class="flex items-center text-white focus:outline-none">
+      <span id="user-display" class="mr-2">Loading...</span>
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div class="absolute right-0 mt-2 w-48 bg-gray-700 rounded shadow-lg z-10">
+      <a href="#" class="block px-4 py-2 text-white hover:bg-gray-600">Community Menu</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-gray-600">Settings</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-gray-600">Switch Community</a>
+      <a href="#" class="block px-4 py-2 text-white hover:bg-gray-600">Logout</a>
     </div>
   </div>
+</header>
 
   <!-- Content Section -->
   <div class="flex flex-col items-center justify-center min-h-screen px-4">
